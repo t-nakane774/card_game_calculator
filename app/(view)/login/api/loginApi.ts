@@ -7,7 +7,7 @@ type LoginRequest = {
 
 
 const login = async (loginRequest: LoginRequest) => {
-  const url = "https://nextjs-api-beige.vercel.app/api/login"
+  const url = "****"
   const data = {}
 
   try {

@@ -12,4 +12,13 @@
   .padding {
     @apply mr-1 ml-1;
   }
+  .submit-button {
+    @apply px-8 py-3 rounded-md border-0 cursor-pointer flex justify-center items-center gap-1 box-border appearance-none outline-none text-center no-underline font-normal text-base leading-[150%] whitespace-nowrap;
+  }
+  .submit-button-solid {
+    @apply bg-blue-700 text-white font-bold hover:bg-blue-500;
+  }
+  .move-center {
+    @apply flex justify-center items-center;
+  }
 }

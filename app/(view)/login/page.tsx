@@ -46,7 +46,7 @@ export default () => {
           <div className="input-box-title">ユーザーID</div>
           <input
             type='text'
-            id="scrap-sold"
+            id="userId"
             className="input-box w-full"
             onChange={(event) => setInputUserId(event.target.value)}
           />
@@ -55,7 +55,7 @@ export default () => {
           <div className="input-box-title">パスワード</div>
           <input
             type='password'
-            id="scrap-sold"
+            id="password"
             className="input-box w-full"
             onChange={(event) => setInputPassword(event.target.value)}
           />

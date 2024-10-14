@@ -1,21 +1,21 @@
 import axios from "axios"
 
-type LoginRequest = {
+export type LoginRequest = {
   userId: string;
   password: string;
 }
 
 
-const login = async (loginRequest: LoginRequest) => {
+export const login = async (loginRequest: LoginRequest) => {
   const url = "****"
   const data = {}
 
   try {
-    const response = await axios.post(url,data);
-    console.log('SUCCESS: ', response.data);
+    // const response = await axios.post(url,data);
+    // console.log('SUCCESS: ', response.data);
     return true;
   } catch (error) {
-    console.error("ERROR: ", error.response)
+    // console.error("ERROR: ", error.response)
     return false;
   }
 

@@ -16,7 +16,7 @@ const callLogin = async (userId: string, password: string) => {
   }
 }
 
-export const Login = () => {
+export default function Login() {
   const [inputUserId, setInputUserId] = useState<string>();
   const [inputPassword, setInputPassword] = useState<string>();
   const [isProcessing, setIsProcessing] = useState<boolean>(false);
@@ -66,5 +66,3 @@ export const Login = () => {
     </main>
   );
 }
-
-export default Login;

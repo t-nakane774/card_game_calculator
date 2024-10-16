@@ -9,11 +9,11 @@ export const metadata: Metadata = {
   description: "CGC helped your life of card game!",
 };
 
-export const AppLayout = ({
+export default function AppLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
-}>) => {
+}>) {
   return (
     <html lang="en">
       <body className={inter.className}>
@@ -22,5 +22,3 @@ export const AppLayout = ({
     </html>
   );
 }
-
-export default AppLayout;

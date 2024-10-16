@@ -1,22 +1,18 @@
 "use client"
 import { useState } from "react"
-import "../styles/utils.css"
-import "./style/login.css"
-import { LoginRequest, login } from "./api/loginApi"
-import { useRouter } from "next/router"
+import "@view/style/utils.css"
+import "@view/login/style/login.css"
+import { login } from "@view/login/api/loginApi"
 
 const callLogin = async (userId: string, password: string) => {
-  const request: LoginRequest = {
-    userId: userId,
-    password: password
-  }
-
-  const response = await login(request);
+  const response = await login({ userId: userId, password: password });
 
   //TODO ここはtokenが切れたページを再表示かログイン後topページのどちかにする
-  if (response) {
+  if (response.success) {
     //TODO useRouterを用いるように変更
     window.location.href = '../chart';
+  } else {
+    alert('ログイン失敗');
   }
 }
 

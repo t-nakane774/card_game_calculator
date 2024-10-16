@@ -2,7 +2,7 @@
 import { redirect } from "next/navigation";
 import { useEffect } from "react";
 
-export default () => {
+export const App = () => {
   useEffect(() => {
     redirect("./login")
   })
@@ -11,3 +11,5 @@ export default () => {
     <main className="flex min-h-screen flex-col items-center justify-between p-24" />
   );
 }
+
+export default App;

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description: "CGC helped your life of card game!",
 };
 
-export default ({
+export const AppLayout = ({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -22,3 +22,5 @@ export default ({
     </html>
   );
 }
+
+export default AppLayout;

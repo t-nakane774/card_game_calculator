@@ -16,7 +16,7 @@ const callLogin = async (userId: string, password: string) => {
   }
 }
 
-export default () => {
+export const Login = () => {
   const [inputUserId, setInputUserId] = useState<string>();
   const [inputPassword, setInputPassword] = useState<string>();
   const [isProcessing, setIsProcessing] = useState<boolean>(false);
@@ -65,5 +65,6 @@ export default () => {
       </section>
     </main>
   );
-
 }
+
+export default Login;

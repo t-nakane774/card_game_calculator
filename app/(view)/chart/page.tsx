@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { LineChart } from './components/LineChart'
 
-export default () => {
+export const Chart = () => {
   const [deckSize, setDeckSize] = useState<number>(40);
   const [cardSize, setCardSize] = useState<number>(3);
 
@@ -32,3 +32,5 @@ export default () => {
     </main>
   )
 }
+
+export default Chart;

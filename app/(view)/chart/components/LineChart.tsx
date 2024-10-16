@@ -23,14 +23,12 @@ export const LineChart: React.FC<ChartProps> = ({ deckSize, cardSize }) => {
   const cards: number[] = [...Array(deckSize)].map((_, index) => index + 1);
 
   let previousValue: number = 0;
-  const drowProbabilities: number[] = cards.map((i, index, array) => {
-    const num = deckSize - index;
+  const drowProbabilities: number[] = cards.map((cardNum) => {
+    const num = deckSize - cardNum + 1;
     const result = 1 - (1 - previousValue) * (num - cardSize) / num;
     previousValue = result;
-    // const result = 1 - (num - cardSize) / num;
     return result < 0 ? 0 : result;
   });
-
 
   // データの定義
   const data = {

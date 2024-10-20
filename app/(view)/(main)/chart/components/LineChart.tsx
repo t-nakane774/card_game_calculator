@@ -8,7 +8,9 @@ import {
   Tooltip,
   Legend,
   Filler,
+  ChartDataset,
 } from 'chart.js';
+import { useState } from 'react';
 import { Line } from 'react-chartjs-2';
 
 ChartJS.register(LinearScale, CategoryScale, LineElement, PointElement, Title, Tooltip, Legend, Filler);
@@ -20,6 +22,8 @@ interface ChartProps {
 }
 
 export const LineChart: React.FC<ChartProps> = ({ deckSize, cardSize }) => {
+  const [datasets, setDatasets] = useState<ChartDataset>();
+
   const cards: number[] = [...Array(deckSize)].map((_, index) => index + 1);
 
   let previousValue: number = 0;
@@ -27,7 +31,7 @@ export const LineChart: React.FC<ChartProps> = ({ deckSize, cardSize }) => {
     const num = deckSize - cardNum + 1;
     const result = 1 - (1 - previousValue) * (num - cardSize) / num;
     previousValue = result;
-    return result < 0 ? 0 : result;
+    return result < 0 ? 0 : result * 100;
   });
 
   // データの定義
@@ -35,7 +39,7 @@ export const LineChart: React.FC<ChartProps> = ({ deckSize, cardSize }) => {
     labels: cards,
     datasets: [
       {
-        label: 'My First dataset',
+        label: 'Probability',
         fill: true,
         backgroundColor: 'rgba(75,192,192,0.4)',
         borderColor: 'rgba(75,192,192,1)',
@@ -66,7 +70,6 @@ export const LineChart: React.FC<ChartProps> = ({ deckSize, cardSize }) => {
 
   return (
     <div>
-      <h2>Line Chart</h2>
       <Line data={data} options={options} />
     </div>
   );

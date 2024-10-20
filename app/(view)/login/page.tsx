@@ -1,5 +1,5 @@
 "use client"
-import { useState } from "react"
+import { useMemo, useState } from "react"
 import "@view/style/utils.css"
 import "@view/login/style/login.css"
 import { login } from "@view/login/api/loginApi"
@@ -10,7 +10,7 @@ const callLogin = async (userId: string, password: string) => {
   //TODO ここはtokenが切れたページを再表示かログイン後topページのどちかにする
   if (response.success) {
     //TODO useRouterを用いるように変更
-    window.location.href = '../chart';
+    window.location.href = '/chart';
   } else {
     alert('ログイン失敗');
   }
@@ -21,14 +21,16 @@ export default function Login() {
   const [inputPassword, setInputPassword] = useState<string>();
   const [isProcessing, setIsProcessing] = useState<boolean>(false);
 
+  const isInputValid = useMemo(() => {
+    return !inputUserId || !inputPassword ? true : false;
+  }, [inputUserId, inputPassword])
+
   const handleLogin = async () => {
     if (!inputUserId) return;
     if (!inputPassword) return;
 
     setIsProcessing(true);
-
     await callLogin(inputUserId, inputPassword);
-
     setIsProcessing(false);
   }
 
@@ -58,9 +60,9 @@ export default function Login() {
         </div>
         <div className="move-center margin-top">
           <button
-            className="submit-button submit-button-solid"
+            className="submit-button disabled-button submit-button-solid"
             onClick={handleLogin}
-            disabled={isProcessing}>ログイン</button>
+            disabled={isInputValid}>ログイン</button>
         </div>
       </section>
     </main>

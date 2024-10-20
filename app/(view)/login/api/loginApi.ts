@@ -22,8 +22,6 @@ export const login = async (loginRequest: LoginRequest) => {
       timeout: 50000 // 5000ms = 5s
     });
 
-    console.log("response.data:", response.data);
-
     return response.data;
   } catch (error) {
     const err = error as Error;

@@ -7,7 +7,7 @@ export default function Chart() {
   const [cardSize, setCardSize] = useState<number>(3);
 
   return (
-    <main className='flex min-h-screen flex-col items-center justify-between p-24'>
+    <main className='flex flex-col p-24'>
       <div className="margin-top">
         <div className="input-box-title">デッキ枚数</div>
         <input

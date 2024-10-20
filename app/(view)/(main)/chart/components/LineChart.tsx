@@ -58,13 +58,37 @@ export const LineChart: React.FC<ChartProps> = ({ deckSize, cardSize }) => {
       },
       title: {
         display: true,
-        text: 'Line Chart Example',
+        text: 'probability',
       },
     },
     scales: {
       y: {
         beginAtZero: true,
+        min: 0,
+        max: 100,
+        title: {
+          display: true,
+          text: 'Probability',
+        },
+        ticks: {
+          stepSize: 20,
+          callback: (value: string | number) => {
+            return value + ' %';
+          },
+        },
+        grid: {
+          color: 'rgba(255, 99, 132, 0.2)', // グリッド線の色
+        },
       },
+      x: {
+        beginAtZero: true,
+        min: 1,
+        max: deckSize,
+        title: {
+          display: true,
+          text: 'drow count',
+        },
+      }
     },
   };
 

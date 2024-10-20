@@ -8,27 +8,34 @@ export default function Chart() {
 
   return (
     <main className='flex flex-col p-24'>
-      <div className="margin-top">
+      <div className="margin-top mx-auto max-w-5xl">
         <div className="input-box-title">デッキ枚数</div>
         <input
           type='number'
           id="deck-size"
           className="input-box w-full"
           placeholder="deck size"
+          max={999}
+          min={1}
+          value={deckSize}
           onChange={(event) => setDeckSize(Number(event.target.value))}
         />
-      </div>
-      <div className="margin-top">
         <div className="input-box-title">引きたいカードの枚数</div>
         <input
           type='number'
-          id="a"
+          id="card-size"
           className="input-box w-full"
           placeholder="card size"
+          max={999}
+          min={1}
+          value={cardSize}
           onChange={(event) => setCardSize(Number(event.target.value))}
         />
       </div>
-      <LineChart deckSize={deckSize} cardSize={cardSize} />
+      <div className="margin-top">
+
+      </div>
+      <LineChart deckSize={deckSize < 1000 ? deckSize : 999} cardSize={cardSize < 1000 ? cardSize : 999} />
     </main>
   )
 }

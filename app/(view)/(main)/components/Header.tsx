@@ -12,8 +12,7 @@ export const Header: React.FC = () => {
           <ul className="flex space-x-6">
             <li><Link href="/home" className="hover:text-gray-400">Home</Link></li>
             <li><Link href="/chart" className="hover:text-gray-400">Chart</Link></li>
-            <li><Link href="/services" className="hover:text-gray-400">Services</Link></li>
-            <li><Link href="/contact" className="hover:text-gray-400">Contact</Link></li>
+            <li><Link href="/record" className="hover:text-gray-400">Record</Link></li>
           </ul>
         </nav>
         <div>

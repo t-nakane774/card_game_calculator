@@ -8,9 +8,7 @@ import {
   Tooltip,
   Legend,
   Filler,
-  ChartDataset,
 } from 'chart.js';
-import { useState } from 'react';
 import { Line } from 'react-chartjs-2';
 
 ChartJS.register(LinearScale, CategoryScale, LineElement, PointElement, Title, Tooltip, Legend, Filler);

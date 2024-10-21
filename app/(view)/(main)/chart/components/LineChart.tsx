@@ -22,7 +22,7 @@ interface ChartProps {
 }
 
 export const LineChart: React.FC<ChartProps> = ({ deckSize, cardSize }) => {
-  const [datasets, setDatasets] = useState<ChartDataset>();
+  // const [datasets, setDatasets] = useState<ChartDataset>();
 
   const cards: number[] = [...Array(deckSize)].map((_, index) => index + 1);
 

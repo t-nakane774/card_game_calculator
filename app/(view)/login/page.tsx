@@ -32,6 +32,8 @@ export default function Login() {
     setIsProcessing(true);
     await callLogin(inputUserId, inputPassword);
     setIsProcessing(false);
+
+    console.log(isProcessing);
   }
 
   return (

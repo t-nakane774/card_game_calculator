@@ -5,7 +5,7 @@ import { useAppRouter } from "@/app/hooks/useAppRouter";
 import { ReactNode, useEffect } from "react"
 
 export const MainUseEffectWrapper: React.FC<{ children: ReactNode }> = ({ children }: { children: ReactNode }) => {
-  const { isLoggedIn, loginUser: login, logoutUser: logout } = useAuth();
+  const { isLoggedIn } = useAuth();
   const router = useAppRouter();
 
   useEffect(() => {

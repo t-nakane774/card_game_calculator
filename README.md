@@ -39,3 +39,13 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 page.tsx の export default はアロー関数を用いないこと
 es-lint のチェックに引っかかり、displayName を宣言しても正しく判定されない可能性がある
+
+ここ好き嫌い分かれるポイント
+import は ダブルクォーテーション
+それ以外は　シングルクォーテーション
+
+## ディレクトリ命名規則
+
+api : サーバーサイドの処理を行うための API エンドポイントを呼び出す処理をまとめたもの
+hooks : 再利用可能なロジックをまとめたもの
+components: React コンポーネントをまとめたもの

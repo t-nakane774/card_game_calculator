@@ -3,27 +3,32 @@ import { useMemo, useState } from "react"
 import "@view/style/utils.css"
 import "@view/login/style/login.css"
 import { login } from "@view/login/api/loginApi"
-
-const callLogin = async (userId: string, password: string) => {
-  const response = await login({ userId: userId, password: password });
-
-  //TODO ここはtokenが切れたページを再表示かログイン後topページのどちかにする
-  if (response.success) {
-    //TODO useRouterを用いるように変更
-    window.location.href = '/chart';
-  } else {
-    alert('ログイン失敗');
-  }
-}
+import { useAppRouter } from "@/app/hooks/useAppRouter"
+import { useAuth } from "@/app/components/AuthProvider"
 
 export default function Login() {
   const [inputUserId, setInputUserId] = useState<string>();
   const [inputPassword, setInputPassword] = useState<string>();
   const [isProcessing, setIsProcessing] = useState<boolean>(false);
+  const router = useAppRouter();
+  const { isLoggedIn, loginUser, logoutUser } = useAuth();
 
   const isInputValid = useMemo(() => {
     return !inputUserId || !inputPassword ? true : false;
   }, [inputUserId, inputPassword])
+
+  const callLogin = async (userId: string, password: string) => {
+    const response = await login({ userId: userId, password: password });
+
+    if (response.success) {
+      loginUser();
+
+      //TODO useRouterを用いるように変更
+      router.navigateToChart();
+    } else {
+      alert('ログイン失敗');
+    }
+  }
 
   const handleLogin = async () => {
     if (!inputUserId) return;

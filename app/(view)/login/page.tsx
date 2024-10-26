@@ -11,7 +11,7 @@ export default function Login() {
   const [inputPassword, setInputPassword] = useState<string>();
   const [isProcessing, setIsProcessing] = useState<boolean>(false);
   const router = useAppRouter();
-  const { isLoggedIn, loginUser } = useAuth();
+  const { loginUser } = useAuth();
 
   const isInputValid = useMemo(() => {
     return !inputUserId || !inputPassword ? true : false;

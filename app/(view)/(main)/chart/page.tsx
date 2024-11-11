@@ -8,34 +8,38 @@ export default function Chart() {
 
   return (
     <main className='flex flex-col p-24'>
-      <div className="margin-top mx-auto max-w-5xl">
-        <div className="input-box-title">デッキ枚数</div>
-        <input
-          type='number'
-          id="deck-size"
-          className="input-box w-full"
-          placeholder="deck size"
-          max={999}
-          min={1}
-          value={deckSize}
-          onChange={(event) => setDeckSize(Number(event.target.value))}
-        />
-        <div className="input-box-title">引きたいカードの枚数</div>
-        <input
-          type='number'
-          id="card-size"
-          className="input-box w-full"
-          placeholder="card size"
-          max={999}
-          min={1}
-          value={cardSize}
-          onChange={(event) => setCardSize(Number(event.target.value))}
-        />
+      <div className="mx-auto">
+        <div>
+          <div className="input-box-title">デッキ枚数</div>
+          <input
+            type='number'
+            id="deck-size"
+            className="input-box w-full"
+            placeholder="deck size"
+            max={999}
+            min={1}
+            value={deckSize}
+            onChange={(event) => setDeckSize(Number(event.target.value))}
+          />
+        </div>
+        <div>
+          <div className="input-box-title">引きたいカードの枚数</div>
+          <input
+            type='number'
+            id="card-size"
+            className="input-box w-full"
+            placeholder="card size"
+            max={999}
+            min={1}
+            value={cardSize}
+            onChange={(event) => setCardSize(Number(event.target.value))}
+          />
+        </div>
       </div>
-      <div className="margin-top">
+      <div className="mx-auto margin-top w-2/3">
+        <LineChart deckSize={deckSize < 1000 ? deckSize : 999} cardSize={cardSize < 1000 ? cardSize : 999} />
+      </div>
 
-      </div>
-      <LineChart deckSize={deckSize < 1000 ? deckSize : 999} cardSize={cardSize < 1000 ? cardSize : 999} />
     </main>
   )
 }

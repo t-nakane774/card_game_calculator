@@ -98,7 +98,9 @@ export const LineChart: React.FC<ChartProps> = ({ deckSize, cardSize }) => {
   return (
     <div>
       <Line data={data} options={options} />
-      <RangeSlider onRangeChange={handleRangeChange} rangeMax={deckSize}></RangeSlider>
+      <div className='mx-auto w-2/3'>
+        <RangeSlider onRangeChange={handleRangeChange} rangeMax={deckSize}></RangeSlider>
+      </div>
     </div>
   );
 };

@@ -10,6 +10,8 @@ import {
   Filler,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
+import { RangeSlider } from './RangeSlider';
+import { useState } from 'react';
 
 ChartJS.register(LinearScale, CategoryScale, LineElement, PointElement, Title, Tooltip, Legend, Filler);
 
@@ -20,9 +22,12 @@ interface ChartProps {
 }
 
 export const LineChart: React.FC<ChartProps> = ({ deckSize, cardSize }) => {
-  // const [datasets, setDatasets] = useState<ChartDataset>();
-
   const cards: number[] = [...Array(deckSize)].map((_, index) => index + 1);
+  const [range, setRange] = useState<number[]>([1, deckSize]);
+
+  const handleRangeChange = (newRange: number[]) => {
+    setRange(newRange);
+  }
 
   let previousValue: number = 0;
   const drowProbabilities: number[] = cards.map((cardNum) => {
@@ -34,7 +39,7 @@ export const LineChart: React.FC<ChartProps> = ({ deckSize, cardSize }) => {
 
   // データの定義
   const data = {
-    labels: cards,
+    labels: cards.slice((range[0] - 1), range[1]),
     datasets: [
       {
         label: 'Probability',
@@ -42,7 +47,7 @@ export const LineChart: React.FC<ChartProps> = ({ deckSize, cardSize }) => {
         backgroundColor: 'rgba(75,192,192,0.4)',
         borderColor: 'rgba(75,192,192,1)',
         borderWidth: 2,
-        data: drowProbabilities,
+        data: drowProbabilities.slice((range[0] - 1), range[1]),
       },
     ],
   };
@@ -75,12 +80,12 @@ export const LineChart: React.FC<ChartProps> = ({ deckSize, cardSize }) => {
           },
         },
         grid: {
-          color: 'rgba(255, 99, 132, 0.2)', // グリッド線の色
+          color: 'rgba(255, 99, 132, 0.2)',
         },
       },
       x: {
         beginAtZero: true,
-        min: 1,
+        min: range[0],
         max: deckSize,
         title: {
           display: true,
@@ -93,6 +98,7 @@ export const LineChart: React.FC<ChartProps> = ({ deckSize, cardSize }) => {
   return (
     <div>
       <Line data={data} options={options} />
+      <RangeSlider onRangeChange={handleRangeChange} rangeMax={deckSize}></RangeSlider>
     </div>
   );
 };
